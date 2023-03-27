@@ -4,10 +4,15 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import BaseCard from "@/components/BaseCard.vue";
 import BaseContainer from "../components/BaseContainer.vue";
+
 const repository = useRestoRepository();
+
 const route = useRoute();
+
 const isLoading = ref(true);
+
 const resto = ref({});
+
 const fetchDetail = async () => {
   isLoading.value = true;
   try {
@@ -19,9 +24,8 @@ const fetchDetail = async () => {
   }
   isLoading.value = false;
 };
+
 onMounted(() => fetchDetail());
-
-
 const reviews = ref([]);
 const fetchReviews = async () => {
   isLoading.value = true;
@@ -34,35 +38,40 @@ const fetchReviews = async () => {
   }
   isLoading.value = false;
 };
+
 onMounted(() => fetchReviews());
 </script>
 
 <template>
-   <BaseContainer>
+  <BaseContainer>
     <RouterLink
       :to="{ name: 'restos' }"
-      class="inline-block p-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-800"
+      class="inline-block p-2 px-4 bg-[#353535] text-white rounded hover:bg-[#303030]"
     >
-    Back
+     Back
     </RouterLink>
 
-    <BaseCard class="mt-4 bg-red-600 text-white">
+    <BaseCard class="mt-4 bg-[#353535] text-white">
       <template #title>Resto</template>
     </BaseCard>
 
-
-    <BaseCard class="mt-4">
+    <BaseCard class="mt-4 bg-[#353535]">
       <template #title>{{ resto.name }}</template>
-      {{ resto.description }}
     </BaseCard>
 
-    <BaseCard class="mt-4 bg-red-600 text-white">
-      <template #title>Reviews</template>
+    <BaseCard class="mt-4 bg-[#353535] text-white">
+      <template #title>{{ resto.description }}</template>
+    </BaseCard>
+
+    <BaseCard class="mt-4 bg-[#353535] text-white">
+      <template #title>Review</template>
     </BaseCard>
 
     <BaseCard v-for="review in reviews" :key="review.id" class="mt-4">
       <template #title>{{ review.user.name }}</template>
       {{ review.text }}
     </BaseCard>
+
+    
   </BaseContainer>
 </template>

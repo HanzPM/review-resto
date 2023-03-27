@@ -15,7 +15,7 @@ defineProps({
   <RouterLink
     v-if="to"
     :to="to"
-    class="block bg-white shadow p-4 rounded select-none"
+    class="block bg-[#353535] shadow p-4 rounded select-none"
   >
     <BaseCardTitle v-if="!!$slots.title">
       <slot name="title" />
@@ -26,9 +26,9 @@ defineProps({
     </BaseCardBody>
   </RouterLink>
 
-  <div v-else class="block bg-white shadow p-4 rounded select-none">
+  <div v-else class="block bg-[#353535] shadow p-4 rounded select-none">
     <BaseCardTitle v-if="!!$slots.title">
-      <slot name="title" />
+      <slot name="title" /> 
     </BaseCardTitle>
 
     <BaseCardBody>
