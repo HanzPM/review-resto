@@ -30,8 +30,8 @@
                 <h1 class="text-4xl text-white font-bold">Vasilio</h1>
             </div>
             <div class="flex justify-around items-center">
-                <router-link to="/restos" class="ml-2 px-4 text-bold text-white">Home</router-link>
-                <router-link to="about" class="ml-2 px-4 mr-4 text-bold text-white">About</router-link>
+                <router-link to="/restos" class="ml-2 px-4 font-bold text-white">Home</router-link>
+                <router-link to="about" class="ml-2 px-4 mr-4 font-bold text-white">About</router-link>
                 <div v-if="userData">
                     <button v-if="dropdown" @click="dropdownHide" class="dropdown-toggle bg-[#111111] px-2 py-1 text-white font-semibold rounded-md">
                         Hi, {{ userData.name }}

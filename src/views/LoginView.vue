@@ -30,7 +30,7 @@ const onSubmit = async () => {
 
 <template>
   <main class="grid grid-cols-12 gap-4 min-h-screen">
-    <section class="col-span-6 bg-white h-full shadow-xl">
+    <section class="col-span-6 bg-[#353535] h-full shadow-xl">
       <form
         method="post"
         :action="route.path"
@@ -38,30 +38,31 @@ const onSubmit = async () => {
         @submit.prevent="onSubmit"
       >
         <div class="mb-4">
-          <label for="email" class="block mb-2">Email</label>
+          <label for="email" class="block text-white font-bold mb-2">Email</label>
           <input
             v-model="credentials.email"
             type="email"
             required
             placeholder="someone@email.com"
-            class="border p-2 w-full bg-gray-50 outline-none focus:ring-4 focus:ring-blue-300 rounded"
+            class="border p-2 w-full bg-gray-50 outline-none focus:ring-4 focus:ring-[#606060] rounded"
           />
         </div>
         <div class="mb-4">
-          <label for="password" class="block mb-2">Password</label>
+          <label for="password" class="block text-white font-bold mb-2">Password</label>
           <input
             v-model="credentials.password"
             type="password"
             required
-            class="border p-2 w-full bg-gray-50 outline-none focus:ring-4 focus:ring-blue-300 rounded"
+            class="border p-2 w-full bg-gray-50 outline-none focus:ring-4 focus:ring-[#606060] rounded"
           />
         </div>
         <button
           type="submit"
-          class="bg-blue-600 text-white p-2 w-full block hover:bg-blue-800 rounded transition-colors duration-200 select-none"
+          class="bg-[#454545] text-white p-2 w-full block hover:bg-[#505050] rounded transition-colors duration-200 select-none"
         >
           Masuk 
         </button>
+        <div class="p-8 absolute top-[365px] font-bold text-white ">Don't have an acoount ? <RouterLink  class="text-blue-300 hover:text-blue-600 cursor-pointer" to="register">Register Now</RouterLink></div>
       </form>
     </section>
   </main>

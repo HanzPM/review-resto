@@ -37,11 +37,7 @@ const excerpt = (text, maxLenght = 10, indicator = "...") => {
     <div class="grid grid-cols-12 gap-4">
       <div v-for="resto in restos" :key="resto.id" class="col-span-4">
         <BaseCard :to="{ name: 'restos-show', params: { id: resto.id } }">
-          <template #title>{{ resto.name }}
-            <div class="text-white">
-                waodhefiu
-            </div>
-        </template>
+          <template #title>{{ resto.name }}</template>
           {{ excerpt(resto.description, 40) }}
         </BaseCard>
       </div>
