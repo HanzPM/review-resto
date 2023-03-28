@@ -1,4 +1,5 @@
 <script setup>
+import axios from "axios";
 import { reactive, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useAuthRepository } from "@/composables";
@@ -13,7 +14,9 @@ const credentials = reactive({
 const isLoggingIn = ref(false);
 const onSubmit = async () => {
   isLoggingIn.value = true;
-
+  axios.defaults.withCredentials = true;
+  axios.defaults.baseURL = "http://localhost:8000";
+  await axios.get('/sanctum/csrf-cookie').then( async response =>  {
   try {
     const { data } = await repository.login(credentials);
     if (data) {
@@ -22,9 +25,10 @@ const onSubmit = async () => {
       router.replace({ name: "restos" });
     }
   } catch (e) {
-    console.error(e);
-  }
-  isLoggingIn.value = false;  
+           console.error(e)
+       }
+      });
+    isLoggingIn.value = false;
 };
 </script>
 
