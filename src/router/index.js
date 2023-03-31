@@ -3,6 +3,7 @@ import LoginView from "../views/LoginView.vue";
 import RestoView from "../views/RestoView.vue";
 import RestoDetailView from "../views/RestoDetailView.vue";
 import RegisterView from "../views/RegisterView.vue";
+import CreateYourResto from "../views/CreateYourResto.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: "/restos/:id",
       name: "restos-show",
       component: RestoDetailView
+    },
+    {
+      path: "/create",
+      name: "create",
+      component: CreateYourResto
     },
   ],
 });
