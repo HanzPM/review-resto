@@ -29,17 +29,29 @@ const excerpt = (text, maxLenght = 10, indicator = "...") => {
   }
   return textCopy;
 };
+const destroy = async (id) => {
+      isLoading.value = true;
+    try {
+      await repository.destroy(id);
+      window.location.reload()
+    } catch (e) {
+      console.error(e);
+    }
+      isLoading.value = false;
+};
 </script>
 
 <template>
     <NavBar/>
   <BaseContainer>
     <div class="grid grid-cols-12 gap-4">
-      <div v-for="resto in restos" :key="resto.id" class="col-span-4">
-        <BaseCard :to="{ name: 'restos-show', params: { id: resto.id } }">
+      <div v-for="resto in restos" :key="resto.id" class="col-span-6 relative">
+        <BaseCard :to="{ name: 'restos-show', params: { id: resto.id } }" c>
           <template #title>{{ resto.name }}</template>
           {{ excerpt(resto.description, 40) }}
         </BaseCard>
+        <button class="p-3 right-5 top-0 absolute text-white font-lg font-bold bg-[#454545] mt-5 hover:bg-[#505050] rounded
+          " type="submit" @click="destroy (resto.id)" >Delete Resto</button>
       </div>
     </div>
   </BaseContainer>
